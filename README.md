@@ -5,26 +5,6 @@ The project compares Text-to-Image, ControlNet, img2img, and Inpainting approach
 
 ---
 
-## Repository Name
-
-Recommended repository name:
-
-```text
-two-stage-edge-case-generation
-```
-
-Alternative names:
-
-```text
-diffusion-edge-case-generation
-controlnet-driving-scenario-generation
-two-stage-driving-risk-generation
-```
-
-The recommended name is `two-stage-edge-case-generation` because the main contribution of this project is not simple image generation, but a two-stage generation strategy for autonomous-driving risk scenarios.
-
----
-
 ## Project Overview
 
 Autonomous-driving systems require diverse and safety-critical scenarios for testing and validation.  
@@ -148,19 +128,6 @@ A broader review of diffusion-based generative models and their potential use in
 
 ---
 
-## Experimental Questions
-
-This project is organized around the following questions:
-
-1. Can Text-to-Image models generate realistic autonomous-driving risk scenarios?
-2. Can ControlNet preserve road structure while changing scene-level conditions?
-3. Can img2img modify global driving context effectively?
-4. Can Inpainting insert local risk factors into specific regions?
-5. Is a single-stage generation process sufficient for autonomous-driving edge-case generation?
-6. Why is a two-stage pipeline useful for separating global context and local risk insertion?
-
----
-
 ## Key Findings
 
 - Text-to-Image generation can create visually plausible driving scenes, but it has limited control over object location and spatial relationships.
@@ -169,34 +136,6 @@ This project is organized around the following questions:
 - Inpainting is more suitable for inserting local risk factors into designated areas.
 - Generating global context and local risk factors in a single step is difficult to control reliably.
 - A two-stage approach is more appropriate for autonomous-driving edge-case generation because it separates global scene formation from local risk-factor insertion.
-
----
-
-## Environment
-
-The experiments are based on Python and Hugging Face Diffusers.
-
-Example installation:
-
-```bash
-pip install diffusers transformers accelerate safetensors opencv-python pillow numpy
-```
-
-Main libraries:
-
-```text
-Python
-PyTorch
-Diffusers
-Transformers
-Accelerate
-Safetensors
-OpenCV
-Pillow
-NumPy
-```
-
-Depending on the model used, GPU acceleration is strongly recommended.
 
 ---
 
@@ -214,48 +153,6 @@ Depending on the model used, GPU acceleration is strongly recommended.
 
 ---
 
-## GitHub Upload Notes
-
-Some files in the original folder may exceed GitHub's standard file-size limit.  
-Before uploading, it is recommended to clean the repository.
-
-### Recommended cleanup
-
-Remove macOS metadata files:
-
-```bash
-find . -name ".DS_Store" -delete
-rm -rf __MACOSX
-```
-
-Clear notebook outputs to reduce file size:
-
-```bash
-jupyter nbconvert --clear-output --inplace "notebooks/two_stage_generation.ipynb"
-jupyter nbconvert --clear-output --inplace "notebooks/controlnet_experiments.ipynb"
-```
-
-Use Git LFS for large PDF or notebook files if necessary:
-
-```bash
-git lfs install
-git lfs track "*.pdf"
-git lfs track "*.ipynb"
-```
-
-Recommended `.gitignore`:
-
-```gitignore
-.DS_Store
-__MACOSX/
-.ipynb_checkpoints/
-__pycache__/
-*.pyc
-.env
-```
-
----
-
 ## Suggested Future Work
 
 - Build prompt templates for different risk-factor categories.
@@ -264,9 +161,3 @@ __pycache__/
 - Define evaluation metrics for generated risk scenarios.
 - Use generated edge-case images for perception or trajectory-prediction model validation.
 - Extend the framework from image generation to video or scenario-level simulation.
-
----
-
-## Author
-
-Yujin Kim
